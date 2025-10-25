@@ -1,4 +1,4 @@
 # Second-Test
 უბრალოდ ფლასკის ტესტი
 
-live: https://github.com/Biggeorgian/Second-Test.git
+live: https://hotel-site-p9ua.onrender.com/
