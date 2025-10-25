@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+
+{% block site_title %}მოგვწერეთ{% endblock %}
+
+{% block body_class %}header-04{% endblock %}
+
+{% block header %}
+    <header class="page-hero">
+        <h1>საკონტაქტო ინფორმაცია</h1>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main class="main-container">
+
+        <nav class="d-none d-lg-flex justify-content-center my-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">მთავარი</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('hotel') }}">მომსახურებები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('room_detail', room_id=1) }}">ოთახები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">დაჯავშნა</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+            </ul>
+        </nav>
+
+        <section class="py-5">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">დაგვიკავშირდით</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">თქვენი სახელი</label>
+                            <input type="text" class="form-control" id="contactName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">თქვენი ელ. ფოსტა</label>
+                            <input type="email" class="form-control" id="contactEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">შეტყობინება</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">გაგზავნა</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-6">
+                    <h2 class="mb-4">ჩვენი მისამართი</h2>
+                    <div class="map-responsive shadow-sm rounded mb-4">
+                        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.openstreetmap.org/export/embed.html?bbox=41.70035719871522%2C41.68571280290168%2C41.70483648777009%2C41.68749552343347&amp;layer=mapnik&amp;marker=41.6866041693422%2C41.702596843242645" allowfullscreen></iframe>
+                    </div>
+
+                    <ul class="contact-info-list">
+                        <li><i class="bi bi-geo-alt-fill text-primary"></i> <strong>მისამართი:</strong> მწვანე კონცხი, ბათუმი, საქართველო</li>
+                        <li><i class="bi bi-telephone-fill text-primary"></i> <strong>ტელეფონი:</strong> +995 555 123 456</li>
+                        <li><i class="bi bi-envelope-fill text-primary"></i> <strong>ელ. ფოსტა:</strong> contact@example.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}

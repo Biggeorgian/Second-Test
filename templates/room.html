@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block site_title %}ოთახის აღწერა{% endblock %}
+
+{% block body_class %}header-03{% endblock %}
+
+{% block header %}
+    <header class="page-hero">
+        <h1>{{ room.name }}</h1>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main class="main-container">
+
+        <nav class="d-none d-lg-flex justify-content-center my-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">მთავარი</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('hotel') }}">მომსახურებები</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('room_detail', room_id=1) }}">ოთახები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">დაჯავშნა</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+            </ul>
+        </nav>
+
+        <section class="py-5">
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div id="roomCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            {% for i in range(room.image_carousel|length) %}
+                            <button type="button" data-bs-target="#roomCarousel" data-bs-slide-to="{{ i }}" class="{{ 'active' if i == 0 }}" aria-current="{{ 'true' if i == 0 }}"></button>
+                            {% endfor %}
+                        </div>
+                        <div class="carousel-inner rounded">
+                            {% for img_name in room.image_carousel %}
+                            <div class="carousel-item {{ 'active' if loop.first }}">
+                                <img src="{{ url_for('static', filename='images/rooms/' + img_name) }}" class="d-block w-100" alt="Room Image">
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#roomCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">წინა</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#roomCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">შემდეგი</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <h2>ოთახის აღწერა</h2>
+                    <p>
+                        {{ room.long_description }}
+                    </p>
+                    <div class="d-grid gap-2 my-4">
+                        <a href="{{ url_for('booking') }}" class="btn btn-primary btn-lg">ნომრის დაჯავშნა</a>
+                    </div>
+                    <hr>
+                    <h4>უფასო მომსახურება</h4>
+                    <ul class="service-list">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> გარე აუზი</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> შეზლონგი</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> მინერალური წყალი</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> ჩაი და ყავა ნომერში</li>
+                    </ul>
+
+                    <h4 class="mt-4">ფასიანი მომსახურება</h4>
+                    <ul class="service-list">
+                        <li><i class="bi bi-star-fill text-warning"></i> სპა პროცედურები</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> სასტუმროს ბარი (შესაძლებელია ბონუს ქულების გამოყენება)</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> ოთახის მინიბარი</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> პერსონალური მენიუს შეკვეთა (სპეც. მომსახურება ნომერში)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3>{{ room.additional_title }}</h3>
+                    <p>
+                        {{ room.additional_information }}
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

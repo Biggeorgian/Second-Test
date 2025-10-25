@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+
+{% block site_title %}ჩვენი მომსახურებები{% endblock %}
+
+{% block body_class %}header-04{% endblock %}
+
+{% block header %}
+    <header class="page-hero">
+        <h1>ჩვენს შესახებ</h1>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main class="main-container">
+
+        <nav class="d-none d-lg-flex justify-content-center my-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">მთავარი</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{ url_for('hotel') }}">მომსახურებები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('room_detail', room_id=1) }}">ოთახები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">დაჯავშნა</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+            </ul>
+        </nav>
+
+        <section class="py-5">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2>კეთილი იყოს თქვენი მობრძანება ზღვისპირა სამოთხეში</h2>
+                    <p class="lead">
+                        ჩვენი სასტუმრო იდეალური ადგილია დაუვიწყარი დასვენებისთვის. ის მდებარეობს ზღვის პირველ ზოლში, საიდანაც იშლება პანორამული ხედები.
+                    </p>
+                    <p>
+                        სასტუმროში სულ 12 კომფორტული ნომერია, რაც სიმყუდროვისა და პერსონალური მომსახურების გარანტიას იძლევა. ჩვენი მიზანია, თითოეულ სტუმარს შევუქმნათ განსაკუთრებული გარემო. სასტუმროს გარშემო უამრავი ისტორიული და კულტურული ღირსშესანიშნაობაა, რომელთა მონახულებაშიც სიამოვნებით დაგეხმარებით.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 my-5">
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='images/interior/interior-01.jpg') }}" class="img-fluid rounded shadow" alt="indoor pool">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='images/interior/interior-02.jpg') }}" class="img-fluid rounded shadow" alt="interior">
+                </div>
+                <div class="col-md-4">
+                    <img src="{{ url_for('static', filename='images/interior/interior-03.jpg') }}" class="img-fluid rounded shadow" alt="outdoor pool">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h2 class="mb-4">ჩვენი სერვისები</h2>
+                </div>
+                <div class="col-md-6">
+                    <h4>უფასო მომსახურება</h4>
+                    <ul class="service-list">
+                        <li><i class="bi bi-check-circle-fill text-success"></i> გარე აუზი</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> შეზლონგი</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> ბოთლის წყალი ნომერში</li>
+                        <li><i class="bi bi-check-circle-fill text-success"></i> ჩაი და ყავა ნომერში</li>
+                    </ul>
+
+                    <h4 class="mt-4">ფასიანი მომსახურება</h4>
+                    <ul class="service-list">
+                        <li><i class="bi bi-star-fill text-warning"></i> სპა პროცედურები</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> სასტუმროს ბარი (შესაძლებელია ბონუს ქულების გამოყენება)</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> ოთახის მინიბარი</li>
+                        <li><i class="bi bi-star-fill text-warning"></i> პერსონალური მენიუს შეკვეთა (Room Service)</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h4>დამატებითი სერვისები</h4>
+                    <ul class="service-list">
+                        <li><i class="bi bi-info-circle-fill text-info"></i> ტანსაცმლის გარეცხვა და დაუთოება</li>
+                        <li><i class="bi bi-info-circle-fill text-info"></i> ფეხსაცმლის წმენდა</li>
+                        <li><i class="bi bi-info-circle-fill text-info"></i> ტრანსფერი აეროპორტიდან</li>
+                    </ul>
+
+                    <h4 class="mt-4">ტურები და გართობა</h4>
+                    <p>
+                        ჩვენ გთავაზობთ სხვადასხვა სახის ტურების ორგანიზებას, როგორც კულტურული ძეგლების, ასევე ბუნების სანახავად. დამატებითი ინფორმაციისთვის მიმართეთ ადმინისტრაციას.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 text-center p-4 bg-light rounded">
+                    <h3>გელით ჩვენთან!</h3>
+                    <p>დაჯავშნეთ ნომერი დღესვე და შეიქმენით დაუვიწყარი მოგონებები.</p>
+                    <a href="{{ url_for('booking') }}" class="btn btn-primary btn-lg">ნომრის დაჯავშნა</a>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

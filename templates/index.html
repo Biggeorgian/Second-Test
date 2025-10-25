@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+
+{% block site_title %}მოგესალმებათ{% endblock %}
+
+{% block body_class %}{% endblock %}
+
+{% block header %}
+<header id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+                aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#imageCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/slider/slider-01.jpg') }}" class="d-block w-100"
+                 alt="Slide 1">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/slider/slider-02.jpg') }}" class="d-block w-100"
+                 alt="Slide 2">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/slider/slider-03.jpg') }}" class="d-block w-100"
+                 alt="Slide 3">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/slider/slider-04.jpg') }}" class="d-block w-100"
+                 alt="Slide 4">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#imageCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">წინა</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#imageCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">შემდეგი</span>
+    </button>
+</header>
+{% endblock %}
+
+{% block content %}
+<main class="main-container">
+
+    <nav class="d-none d-lg-flex justify-content-center my-4">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                    href="{{ url_for('index') }}">მთავარი</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('hotel') }}">მომსახურებები</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('room_detail', room_id=1) }}">ოთახები</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">დაჯავშნა</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+        </ul>
+    </nav>
+    <section class="py-5">
+        <div class="row g-4">
+
+            {% for room in rooms_db %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/rooms/' + room.image) }}" class="card-img-top"
+                         alt="ოთახის სურათი">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ room.room_type }}</h5>
+                        <p class="card-text">
+                            <strong>ღირებულება</strong>: {{ room.price_per_night }}₾
+                        </p>
+                        <p class="card-text">
+                            {{ room.short_description }}
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 pb-3">
+                        <a href="{{ url_for('room_detail', room_id=room.id) }}" class="btn btn-primary w-100">დეტალური
+                            ინფორმაცია</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/hotel.jpg') }}" class="img-fluid rounded"
+                     alt="სასტუმროს ინტერიერი">
+            </div>
+            <div class="col-md-6">
+                <h3>ჩვენ შესახებ</h3>
+                    <p>
+                        სასტუმრო ბათუთაქუარი გთავაზობთ მაღალი კლასის მომსახურებას. ყველა ოთახი აღჭურვილია თანამედროვე ტექნიკითა და ყველა საჭირო ინვენტარით. ჩვენი მთავარი საზრუნავია, რომ თქვენი დასვენება ვაქციოთ დაუვიწყარ და ხიფათით აღსავსე თავგადასავლად.
+                    </p>
+                    <p>
+                        სასტუმროს მიმდებარე ზღვა ყველაზე სუფთაა საქართველოს აკვატორიაში. ამიტომ თავისუფლად შეძლებთ მედუზებთან ერთად ცურვას, რაც დაუვიწყარ შთაბეჭდილებებს შესძენს თქვენს ცხოვრებას.
+                    </p>
+                    <p>
+                        დამატებით გთავაზობთ სპა ცენტრს, ფიტნეს დარბაზსა და რესტორანს, რომელშიც მიშლენის ვარსკვლავის მფლობელი შეფ მზარეული დაგიმზადებთ ბაყაყის ქვირითის ჩახოხბილსა და თევზის მწნილს. ასევე, ბადრიჯნის წვენზე დამზადებული ექსკლუზიური სასმელს იაგერბადრიჯანი.
+                    </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+{% endblock %}

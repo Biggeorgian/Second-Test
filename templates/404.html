@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block site_title %}გაურკვეველი შეცდომა{% endblock %}
+
+{% block body_class %}header-02{% endblock %}
+
+{% block header %}
+    <header class="page-hero">
+        <h1>4 0 4</h1>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <main class="main-container">
+        <nav class="d-none d-lg-flex justify-content-center my-4">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">მთავარი</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('hotel') }}">მომსახურებები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('room_detail', room_id=1) }}">ოთახები</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('booking') }}">დაჯავშნა</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">კონტაქტი</a></li>
+            </ul>
+        </nav>
+        <section class="py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="card shadow">
+                        <div class="card-body p-5 bg-light">
+                            <h2 class="text-center mb-4">ასეთი გვერდი არ არსებობს</h2>
+
+                            <div class="text-center mt-4 text-danger">
+                                <p>{{ message }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+{% endblock %}
